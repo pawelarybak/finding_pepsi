@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "finding_pepsi/window_operations.cpp"
-            timestampString = "566307177.175815"
+            timestampString = "566339853.215242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -80,22 +80,6 @@
             startingLineNumber = "14"
             endingLineNumber = "14"
             landmarkName = "getShape(cv::Mat&amp; I, unsigned int i, unsigned int j)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "finding_pepsi/main.cpp"
-            timestampString = "566325786.887243"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "redSegment(cv::Mat&amp; mask, std::vector&lt;cv::Mat&gt;&amp; dst)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

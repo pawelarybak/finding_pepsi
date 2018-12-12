@@ -115,14 +115,16 @@ void rankFilt(cv::Mat& I, std::function<unsigned char* (unsigned char *, unsigne
 }
 
 
-void erosion(cv::Mat& I)
+cv::Mat& erosion(cv::Mat& I)
 {
     rankFilt(I, std::min_element<unsigned char *>);
+    return I;
 }
 
-void dilation(cv::Mat& I)
+cv::Mat& dilation(cv::Mat& I)
 {
     rankFilt(I, std::max_element<unsigned char *>);
+    return I;
 }
 
 cv::Mat& open(cv::Mat& I, unsigned int rank)

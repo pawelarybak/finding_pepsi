@@ -19,8 +19,8 @@ cv::Mat redMask(cv::Mat& I)
     cv::Mat O = I.clone();
     filterColor(O, ColorChannel::RED);
     tresh(O, 40);
-    close(O, 3);
-//    open(O);
+//    close(O, 3);
+    open(O, 4);
 //    medianFilter(O);
     return O;
 }
@@ -31,13 +31,15 @@ void redSegment(cv::Mat& mask, std::vector<cv::Mat>& dst)
     getSegments(mask, shapes);
 //    int ctr = 0;
     for (cv::Mat& shape : shapes) {
+        close(shape, 3);
         const double _malinowska = malinowska(shape);
-        const double _M7 = M7(shape);
-        const double _M3 = M3(shape);
+//        const double _M7 = M7(shape);
+//        const double _M3 = M3(shape);
 //        cv::imshow(std::to_string(ctr), shape);
-//        std::cout << ctr << ": " << _malinowska << " " << M3(shape) << " " << M7(shape) << std::endl;
+//        std::cout << ctr << ": " << _malinowska << " " << _M3 << " " << _M7 << std::endl;
 //        ctr += 1;
-        if (_malinowska > -0.08 && _malinowska < -0.022 && _M7 < 1.0 && _M3 > 5e+14) {
+//        if (_malinowska > -0.08 && _malinowska < -0.022 && _M7 < 5.0) {
+        if (_malinowska > -0.08 && _malinowska < -0.022) {
             dst.push_back(shape);
         }
     }
@@ -60,13 +62,14 @@ void blueSegment(cv::Mat& mask, std::vector<cv::Mat>& dst)
     getSegments(mask, shapes);
 //    int ctr = 0;
     for (cv::Mat& shape : shapes) {
-        const double _malinowska = malinowska(shape);
-        const double _M7 = M7(shape);
         close(shape);
+        const double _malinowska = malinowska(shape);
+//        const double _M7 = M7(shape);
 //        cv::imshow(std::to_string(ctr), shape);
 //        std::cout << ctr << ": " << _malinowska << " " << M3(shape) << " " << M7(shape) << std::endl;
 //        ctr += 1;
-        if (_malinowska > 0.2 && _malinowska < 0.4 && _M7 < 3.0) {
+//        if (_malinowska > 0.2 && _malinowska < 0.6 && _M7 < 10.0) {
+        if (_malinowska > 0.2 && _malinowska < 0.6) {
             dst.push_back(shape);
         }
     }
@@ -78,7 +81,7 @@ void mergeSegments(std::vector<cv::Mat>& redSegments, std::vector<cv::Mat>& blue
         for (cv::Mat& blueShape : blueSegments) {
             const double dist = rDist(redShape, blueShape);
 //            std::cout << dist << std::endl;
-            if (dist < 0.7 && dist > 0.5) {
+            if (dist < 0.8 && dist > 0.5) {
                 dst.push_back(redShape + blueShape);
             }
         }
@@ -87,40 +90,44 @@ void mergeSegments(std::vector<cv::Mat>& redSegments, std::vector<cv::Mat>& blue
 
 int main(int argc, char* argv [])
 {
-    cv::Mat originalImg = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi3_xsmall.jpeg");
+    if (argc < 2) {
+        std::cerr << "File path is required" << std::endl;
+        return -1;
+    }
+    cv::Mat originalImg = cv::imread(argv[1]);
+//    cv::Mat originalImg = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi_lol.jpg");
+//    int ctr = 0;
     
     std::vector<cv::Mat> redElements;
     cv::Mat rMsk = redMask(originalImg);
-//    cv::imshow("sadf", rMsk);
+    cv::imshow("rMsk", rMsk);
     redSegment(rMsk, redElements);
 
-//    int ctr = 0;
 //    std::cout << redElements.size() << std::endl;
 //    for (cv::Mat& sh : redElements) {
-//        cv::imshow(std::to_string(ctr), sh);
+//        cv::imshow("r" + std::to_string(ctr), sh);
 //        ctr += 1;
 //    }
-//
+
     std::vector<cv::Mat> blueElements;
     cv::Mat bMsk = blueMask(originalImg);
-//    cv::imshow("asd", bMsk);
+    cv::imshow("bMsk", bMsk);
     blueSegment(bMsk, blueElements);
 
-//    int ctr = 0;
+    
 //    std::cout << blueElements.size() << std::endl;
 //    for (cv::Mat& sh : blueElements) {
-//        cv::imshow(std::to_string(ctr), sh);
+//        cv::imshow("b" + std::to_string(ctr), sh);
 //        ctr += 1;
 //    }
 
     std::vector<cv::Mat> foundLogos;
     mergeSegments(redElements, blueElements, foundLogos);
 
-    int ctr = 0;
     for (cv::Mat& logo : foundLogos) {
         drawRect(originalImg, mbb(logo), 1);
-        cv::imshow(std::to_string(ctr), logo);
-        ctr += 1;
+//        cv::imshow(std::to_string(ctr), logo);
+//        ctr += 1;
     }
 
     cv::imshow("result", originalImg);

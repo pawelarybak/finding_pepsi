@@ -19,6 +19,8 @@ cv::Mat& edgeFilter(cv::Mat& I);
 cv::Mat& open(cv::Mat& I, unsigned int rank = 1);
 cv::Mat& close(cv::Mat& I, unsigned int rank = 1);
 cv::Mat& medianFilter(cv::Mat& I);
+cv::Mat& dilation(cv::Mat& I);
+cv::Mat& erosion(cv::Mat& I);
 
 
 #endif /* window_operations_hpp */
