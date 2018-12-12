@@ -11,15 +11,24 @@
 
 #include "point_operations.hpp"
 #include "window_operations.hpp"
-
+#include "segmentation.hpp"
 
 int main(int argc, char* argv [])
 {
-    cv::Mat i = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi1_xsmall.jpeg");
-    tresh(i, 100, 200);
+    cv::Mat i = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi2w_xsmall.jpeg");
+    tresh(i, 250);
+    medianFilter(i);
     cv::imshow("asdf", i);
-    close(i, 2);
-    cv::imshow("asdf2", i);
+    
+    std::vector<cv::Mat> shapes;
+    int ctr = 0;
+    getSegments(i, shapes);
+    
+    for (cv::Mat& sh : shapes) {
+        cv::imshow(std::to_string(ctr), sh);
+        ctr += 1;
+    }
+    
     cv::waitKey(-1);
     return 0;
 }

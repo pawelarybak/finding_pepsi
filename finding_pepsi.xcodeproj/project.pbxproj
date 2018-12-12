@@ -10,8 +10,8 @@
 		3624F64B21C0E94E00EAF9E3 /* point_operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3624F64921C0E94E00EAF9E3 /* point_operations.cpp */; };
 		3624F64E21C0EA0100EAF9E3 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3624F64C21C0EA0100EAF9E3 /* utils.cpp */; };
 		3624F65121C0F0A800EAF9E3 /* window_operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3624F64F21C0F0A800EAF9E3 /* window_operations.cpp */; };
+		3624F65421C0FD7F00EAF9E3 /* segmentation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3624F65221C0FD7F00EAF9E3 /* segmentation.cpp */; };
 		36B78EDD21BD494700F036DA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B78EDC21BD494700F036DA /* main.cpp */; };
-		36B78EEB21BD61F100F036DA /* segmentation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B78EE921BD61F100F036DA /* segmentation.cpp */; };
 		36B78EEE21BD682300F036DA /* shape_analyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B78EEC21BD682300F036DA /* shape_analyze.cpp */; };
 /* End PBXBuildFile section */
 
@@ -34,10 +34,10 @@
 		3624F64D21C0EA0100EAF9E3 /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
 		3624F64F21C0F0A800EAF9E3 /* window_operations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = window_operations.cpp; sourceTree = "<group>"; };
 		3624F65021C0F0A800EAF9E3 /* window_operations.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = window_operations.hpp; sourceTree = "<group>"; };
+		3624F65221C0FD7F00EAF9E3 /* segmentation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = segmentation.cpp; sourceTree = "<group>"; };
+		3624F65321C0FD7F00EAF9E3 /* segmentation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = segmentation.hpp; sourceTree = "<group>"; };
 		36B78ED921BD494700F036DA /* finding_pepsi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = finding_pepsi; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B78EDC21BD494700F036DA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		36B78EE921BD61F100F036DA /* segmentation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = segmentation.cpp; sourceTree = "<group>"; };
-		36B78EEA21BD61F100F036DA /* segmentation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = segmentation.hpp; sourceTree = "<group>"; };
 		36B78EEC21BD682300F036DA /* shape_analyze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shape_analyze.cpp; sourceTree = "<group>"; };
 		36B78EED21BD682300F036DA /* shape_analyze.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shape_analyze.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				36B78EDC21BD494700F036DA /* main.cpp */,
-				36B78EE921BD61F100F036DA /* segmentation.cpp */,
-				36B78EEA21BD61F100F036DA /* segmentation.hpp */,
 				36B78EEC21BD682300F036DA /* shape_analyze.cpp */,
 				36B78EED21BD682300F036DA /* shape_analyze.hpp */,
 				3624F64921C0E94E00EAF9E3 /* point_operations.cpp */,
@@ -83,6 +81,8 @@
 				3624F64D21C0EA0100EAF9E3 /* utils.hpp */,
 				3624F64F21C0F0A800EAF9E3 /* window_operations.cpp */,
 				3624F65021C0F0A800EAF9E3 /* window_operations.hpp */,
+				3624F65221C0FD7F00EAF9E3 /* segmentation.cpp */,
+				3624F65321C0FD7F00EAF9E3 /* segmentation.hpp */,
 			);
 			path = finding_pepsi;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 				3624F64E21C0EA0100EAF9E3 /* utils.cpp in Sources */,
 				3624F65121C0F0A800EAF9E3 /* window_operations.cpp in Sources */,
 				3624F64B21C0E94E00EAF9E3 /* point_operations.cpp in Sources */,
-				36B78EEB21BD61F100F036DA /* segmentation.cpp in Sources */,
+				3624F65421C0FD7F00EAF9E3 /* segmentation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +269,7 @@
 		36B78EE121BD494700F036DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/Cellar/opencv/3.4.3_1/include/;
 				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.3_1/lib/;
@@ -328,6 +329,7 @@
 		36B78EE221BD494700F036DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.3_1/include/;
 				LIBRARY_SEARCH_PATHS = "";

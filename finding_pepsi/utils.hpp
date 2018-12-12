@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 
+typedef std::pair<unsigned int, unsigned int> Point;
+
 unsigned char mean(cv::Vec3b v);
 void forEach(cv::Mat& I, std::function<void(cv::Mat_<cv::Vec3b>&, unsigned int, unsigned int)> f, int padding = 0);
 
