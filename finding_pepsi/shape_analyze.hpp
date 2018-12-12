@@ -21,5 +21,8 @@ double malinowska(cv::Mat& I);
 Rect mbb(cv::Mat& I);
 double dist(Point lhs, Point rhs);
 double rDist(cv::Mat& I, cv::Mat& O);
+double M3(cv::Mat& I);
+double M7(cv::Mat& I);
+
 
 #endif /* shape_analyze_hpp */

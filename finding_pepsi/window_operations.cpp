@@ -41,6 +41,7 @@ cv::Mat& conv(cv::Mat& I, const float* const op)
     forEach(O, [&](cv::Mat_<cv::Vec3b>& _O, unsigned int i, unsigned int j) {
         _O(i, j) = applyConv(_I, i, j, op);
     }, 1);
+    I = O;
     return I;
 }
 

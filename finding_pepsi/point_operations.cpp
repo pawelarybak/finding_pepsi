@@ -28,3 +28,20 @@ void filterColor(cv::Mat& I, ColorChannel ch)
         _I(i, j) = { newVal, newVal, newVal };
     });
 }
+
+void treshHLS(cv::Mat& I, cv::Vec3b min_hls, cv::Vec3b max_hls)
+{
+    cv::Mat hls;
+    cv::cvtColor(I, hls, CV_BGR2HLS);
+    
+    
+    forEach(I, [&](cv::Mat_<cv::Vec3b>& _I, unsigned int i, unsigned int j) {
+        if (_I(i, j)[0] >= min_hls[0] && _I(i, j)[0] <= max_hls[0]
+            && _I(i, j)[1] >= min_hls[1] && _I(i, j)[1] <= max_hls[1]
+            && _I(i, j)[2] >= min_hls[2] && _I(i, j)[2] <= max_hls[2]) {
+            _I(i, j) = { 255, 255, 255 };
+        } else {
+            _I(i, j) = { 0, 0, 0 };
+        }
+    });
+}

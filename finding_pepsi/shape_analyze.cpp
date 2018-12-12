@@ -43,6 +43,16 @@ double M(cv::Mat& I, int p, int q)
     return sum;
 }
 
+double M3(cv::Mat& I)
+{
+    return pow(M(I, 3, 0) - 3.0 * M(I, 1, 2), 2) + pow(3 * M(I, 2, 1) - M(I, 0, 3), 2) / pow(m(I, 0, 0), 5);
+}
+
+double M7(cv::Mat& I)
+{
+    return (M(I, 2, 0) * M(I, 0, 2) - pow(M(I, 1, 1), 2)) / pow(m(I, 0, 0), 4);
+}
+
 int field(cv::Mat& I)
 {
     return m(I, 0, 0);
@@ -50,7 +60,8 @@ int field(cv::Mat& I)
 
 int circ(cv::Mat& I)
 {
-    return field(edgeFilter(I));
+    cv::Mat O = I.clone();
+    return field(edgeFilter(O));
 }
 
 double malinowska(cv::Mat& I)

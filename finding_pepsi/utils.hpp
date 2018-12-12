@@ -23,6 +23,6 @@ struct Rect {
 
 unsigned char mean(cv::Vec3b v);
 void forEach(cv::Mat& I, std::function<void(cv::Mat_<cv::Vec3b>&, unsigned int, unsigned int)> f, int padding = 0);
-cv::Mat& drawRect(cv::Mat& I, Rect r, cv::Vec3b color = { 0, 255, 0});
+cv::Mat& drawRect(cv::Mat& I, Rect r, int grow = 0, cv::Vec3b color = { 0, 255, 0});
 
 #endif /* utils_hpp */

@@ -25,16 +25,16 @@ void forEach(cv::Mat& I, std::function<void(cv::Mat_<cv::Vec3b>&, unsigned int, 
     I = _I;
 }
 
-cv::Mat& drawRect(cv::Mat& I, Rect r, cv::Vec3b color)
+cv::Mat& drawRect(cv::Mat& I, Rect r, int grow, cv::Vec3b color)
 {
     cv::Mat_<cv::Vec3b> _I = I;
-    for (int i = r.y_min; i < r.y_max; ++i) {
-        _I(i, r.x_min) = color;
-        _I(i, r.x_max) = color;
+    for (int i = std::max(r.x_min - grow, 0U); i < std::min(r.x_max + grow, (unsigned int)I.cols); ++i) {
+        _I(i, std::max(r.y_min - grow, 0U)) = color;
+        _I(i, std::min(r.y_max + grow, (unsigned int)I.rows)) = color;
     }
-    for (int j = r.x_min; j < r.x_max; ++j) {
-        _I(r.y_min, j) = color;
-        _I(r.y_max, j) = color;
+    for (int j = std::max(r.y_min - grow, 0U); j < std::min(r.y_max + grow, (unsigned int)I.rows); ++j) {
+        _I(std::max(r.x_min - grow, 0U), j) = color;
+        _I(std::min(r.x_max + grow, (unsigned int)I.cols), j) = color;
     }
     return I;
 }
