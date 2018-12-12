@@ -34,26 +34,26 @@ cv::Vec3b applyConv(cv::Mat_<cv::Vec3b>& I, unsigned int i, unsigned int j, cons
     };
 }
 
-void conv(cv::Mat& I, const float* const op)
+cv::Mat& conv(cv::Mat& I, const float* const op)
 {
     cv::Mat O = I.clone();
     cv::Mat_<cv::Vec3b> _I = I;
     forEach(O, [&](cv::Mat_<cv::Vec3b>& _O, unsigned int i, unsigned int j) {
         _O(i, j) = applyConv(_I, i, j, op);
     }, 1);
-    I = O;
+    return I;
 }
 
-void blur(cv::Mat& I)
+cv::Mat& blur(cv::Mat& I)
 {
     const float op[] = { 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0 };
-    conv(I, op);
+    return conv(I, op);
 }
 
-void edgeFilter(cv::Mat& I)
+cv::Mat& edgeFilter(cv::Mat& I)
 {
     const float op[] = { 0, -1, 0, -1, 4, -1, 0, -1, 0 };
-    conv(I, op);
+    return conv(I, op);
 }
 
 
@@ -124,7 +124,7 @@ void dilation(cv::Mat& I)
     rankFilt(I, std::max_element<unsigned char *>);
 }
 
-void open(cv::Mat& I, unsigned int rank)
+cv::Mat& open(cv::Mat& I, unsigned int rank)
 {
     for (int i = 0; i < rank; ++i) {
         erosion(I);
@@ -132,9 +132,10 @@ void open(cv::Mat& I, unsigned int rank)
     for (int i = 0; i < rank; ++i) {
         dilation(I);
     }
+    return I;
 }
 
-void close(cv::Mat& I, unsigned int rank)
+cv::Mat& close(cv::Mat& I, unsigned int rank)
 {
     for (int i = 0; i < rank; ++i) {
         dilation(I);
@@ -142,12 +143,14 @@ void close(cv::Mat& I, unsigned int rank)
     for (int i = 0; i < rank; ++i) {
         erosion(I);
     }
+    return I;
 }
 
-void medianFilter(cv::Mat& I)
+cv::Mat& medianFilter(cv::Mat& I)
 {
     rankFilt(I, [](unsigned char* first, unsigned char* last) -> unsigned char* {
         std::sort(first, last);
         return (first + 5);
     });
+    return I;
 }

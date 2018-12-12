@@ -14,10 +14,11 @@
 
 #include "utils.hpp"
 
-void blur(cv::Mat& I);
-void open(cv::Mat& I, unsigned int rank = 1);
-void close(cv::Mat& I, unsigned int rank = 1);
-void medianFilter(cv::Mat& I);
+cv::Mat& blur(cv::Mat& I);
+cv::Mat& edgeFilter(cv::Mat& I);
+cv::Mat& open(cv::Mat& I, unsigned int rank = 1);
+cv::Mat& close(cv::Mat& I, unsigned int rank = 1);
+cv::Mat& medianFilter(cv::Mat& I);
 
 
 #endif /* window_operations_hpp */
