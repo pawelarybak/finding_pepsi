@@ -17,5 +17,21 @@
             endingLineNumber = "73">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "finding_pepsi/window_operations.cpp"
+            timestampString = "566295552.6492701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "applyRank(cv::Mat_&lt;cv::Vec3b&gt;&amp; I, unsigned int i, unsigned int j, std::function&lt;unsigned char* (unsigned char *, unsigned char *)&gt; func)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
