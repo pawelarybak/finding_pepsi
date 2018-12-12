@@ -15,5 +15,11 @@
 #include "utils.hpp"
 #include "window_operations.hpp"
 
+int field(cv::Mat& I);
+int circ(cv::Mat& I);
+double malinowska(cv::Mat& I);
+Rect mbb(cv::Mat& I);
+double dist(Point lhs, Point rhs);
+double rDist(cv::Mat& I, cv::Mat& O);
 
 #endif /* shape_analyze_hpp */

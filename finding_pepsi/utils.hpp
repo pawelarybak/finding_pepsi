@@ -14,7 +14,15 @@
 
 typedef std::pair<unsigned int, unsigned int> Point;
 
+struct Rect {
+    unsigned int y_min;
+    unsigned int x_min;
+    unsigned int y_max;
+    unsigned int x_max;
+};
+
 unsigned char mean(cv::Vec3b v);
 void forEach(cv::Mat& I, std::function<void(cv::Mat_<cv::Vec3b>&, unsigned int, unsigned int)> f, int padding = 0);
+cv::Mat& drawRect(cv::Mat& I, Rect r, cv::Vec3b color = { 0, 255, 0});
 
 #endif /* utils_hpp */

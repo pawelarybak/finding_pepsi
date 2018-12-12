@@ -24,3 +24,17 @@ void forEach(cv::Mat& I, std::function<void(cv::Mat_<cv::Vec3b>&, unsigned int, 
     }
     I = _I;
 }
+
+cv::Mat& drawRect(cv::Mat& I, Rect r, cv::Vec3b color)
+{
+    cv::Mat_<cv::Vec3b> _I = I;
+    for (int i = r.y_min; i < r.y_max; ++i) {
+        _I(i, r.x_min) = color;
+        _I(i, r.x_max) = color;
+    }
+    for (int j = r.x_min; j < r.x_max; ++j) {
+        _I(r.y_min, j) = color;
+        _I(r.y_max, j) = color;
+    }
+    return I;
+}

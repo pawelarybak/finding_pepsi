@@ -18,16 +18,17 @@ int main(int argc, char* argv [])
     cv::Mat i = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi2w_xsmall.jpeg");
     tresh(i, 250);
     medianFilter(i);
+    drawRect(i, { 100, 100, 200, 200 });
     cv::imshow("asdf", i);
     
-    std::vector<cv::Mat> shapes;
-    int ctr = 0;
-    getSegments(i, shapes);
-    
-    for (cv::Mat& sh : shapes) {
-        cv::imshow(std::to_string(ctr), sh);
-        ctr += 1;
-    }
+//    std::vector<cv::Mat> shapes;
+//    int ctr = 0;
+//    getSegments(i, shapes);
+//    
+//    for (cv::Mat& sh : shapes) {
+//        cv::imshow(std::to_string(ctr), sh);
+//        ctr += 1;
+//    }
     
     cv::waitKey(-1);
     return 0;
