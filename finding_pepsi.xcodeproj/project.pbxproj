@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3624F64B21C0E94E00EAF9E3 /* point_operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3624F64921C0E94E00EAF9E3 /* point_operations.cpp */; };
+		3624F64E21C0EA0100EAF9E3 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3624F64C21C0EA0100EAF9E3 /* utils.cpp */; };
 		36B78EDD21BD494700F036DA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B78EDC21BD494700F036DA /* main.cpp */; };
+		36B78EEB21BD61F100F036DA /* segmentation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B78EE921BD61F100F036DA /* segmentation.cpp */; };
+		36B78EEE21BD682300F036DA /* shape_analyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B78EEC21BD682300F036DA /* shape_analyze.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +27,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3624F64921C0E94E00EAF9E3 /* point_operations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = point_operations.cpp; sourceTree = "<group>"; };
+		3624F64A21C0E94E00EAF9E3 /* point_operations.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = point_operations.hpp; sourceTree = "<group>"; };
+		3624F64C21C0EA0100EAF9E3 /* utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		3624F64D21C0EA0100EAF9E3 /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
 		36B78ED921BD494700F036DA /* finding_pepsi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = finding_pepsi; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B78EDC21BD494700F036DA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		36B78EE921BD61F100F036DA /* segmentation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = segmentation.cpp; sourceTree = "<group>"; };
+		36B78EEA21BD61F100F036DA /* segmentation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = segmentation.hpp; sourceTree = "<group>"; };
+		36B78EEC21BD682300F036DA /* shape_analyze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shape_analyze.cpp; sourceTree = "<group>"; };
+		36B78EED21BD682300F036DA /* shape_analyze.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shape_analyze.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				36B78EDC21BD494700F036DA /* main.cpp */,
+				36B78EE921BD61F100F036DA /* segmentation.cpp */,
+				36B78EEA21BD61F100F036DA /* segmentation.hpp */,
+				36B78EEC21BD682300F036DA /* shape_analyze.cpp */,
+				36B78EED21BD682300F036DA /* shape_analyze.hpp */,
+				3624F64921C0E94E00EAF9E3 /* point_operations.cpp */,
+				3624F64A21C0E94E00EAF9E3 /* point_operations.hpp */,
+				3624F64C21C0EA0100EAF9E3 /* utils.cpp */,
+				3624F64D21C0EA0100EAF9E3 /* utils.hpp */,
 			);
 			path = finding_pepsi;
 			sourceTree = "<group>";
@@ -97,7 +117,7 @@
 				};
 			};
 			buildConfigurationList = 36B78ED421BD494700F036DA /* Build configuration list for PBXProject "finding_pepsi" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -118,7 +138,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B78EEE21BD682300F036DA /* shape_analyze.cpp in Sources */,
 				36B78EDD21BD494700F036DA /* main.cpp in Sources */,
+				3624F64E21C0EA0100EAF9E3 /* utils.cpp in Sources */,
+				3624F64B21C0E94E00EAF9E3 /* point_operations.cpp in Sources */,
+				36B78EEB21BD61F100F036DA /* segmentation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +264,57 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/Cellar/opencv/3.4.3_1/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.3_1/lib/;
+				OTHER_LDFLAGS = (
+					"-I/usr/local/Cellar/opencv/3.4.3_1/include/opencv",
+					"-I/usr/local/Cellar/opencv/3.4.3_1/include",
+					"-L/usr/local/Cellar/opencv/3.4.3_1/lib",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_videostab",
+					"-lopencv_aruco",
+					"-lopencv_bgsegm",
+					"-lopencv_bioinspired",
+					"-lopencv_ccalib",
+					"-lopencv_dnn_objdetect",
+					"-lopencv_dpm",
+					"-lopencv_face",
+					"-lopencv_photo",
+					"-lopencv_fuzzy",
+					"-lopencv_hfs",
+					"-lopencv_img_hash",
+					"-lopencv_line_descriptor",
+					"-lopencv_optflow",
+					"-lopencv_reg",
+					"-lopencv_rgbd",
+					"-lopencv_saliency",
+					"-lopencv_sfm",
+					"-lopencv_stereo",
+					"-lopencv_structured_light",
+					"-lopencv_phase_unwrapping",
+					"-lopencv_surface_matching",
+					"-lopencv_tracking",
+					"-lopencv_datasets",
+					"-lopencv_dnn",
+					"-lopencv_plot",
+					"-lopencv_xfeatures2d",
+					"-lopencv_shape",
+					"-lopencv_video",
+					"-lopencv_ml",
+					"-lopencv_ximgproc",
+					"-lopencv_calib3d",
+					"-lopencv_features2d",
+					"-lopencv_highgui",
+					"-lopencv_videoio",
+					"-lopencv_flann",
+					"-lopencv_xobjdetect",
+					"-lopencv_imgcodecs",
+					"-lopencv_objdetect",
+					"-lopencv_xphoto",
+					"-lopencv_imgproc",
+					"-lopencv_core",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -248,6 +323,57 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.3_1/include/;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-I/usr/local/Cellar/opencv/3.4.3_1/include/opencv",
+					"-I/usr/local/Cellar/opencv/3.4.3_1/include",
+					"-L/usr/local/Cellar/opencv/3.4.3_1/lib",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_videostab",
+					"-lopencv_aruco",
+					"-lopencv_bgsegm",
+					"-lopencv_bioinspired",
+					"-lopencv_ccalib",
+					"-lopencv_dnn_objdetect",
+					"-lopencv_dpm",
+					"-lopencv_face",
+					"-lopencv_photo",
+					"-lopencv_fuzzy",
+					"-lopencv_hfs",
+					"-lopencv_img_hash",
+					"-lopencv_line_descriptor",
+					"-lopencv_optflow",
+					"-lopencv_reg",
+					"-lopencv_rgbd",
+					"-lopencv_saliency",
+					"-lopencv_sfm",
+					"-lopencv_stereo",
+					"-lopencv_structured_light",
+					"-lopencv_phase_unwrapping",
+					"-lopencv_surface_matching",
+					"-lopencv_tracking",
+					"-lopencv_datasets",
+					"-lopencv_dnn",
+					"-lopencv_plot",
+					"-lopencv_xfeatures2d",
+					"-lopencv_shape",
+					"-lopencv_video",
+					"-lopencv_ml",
+					"-lopencv_ximgproc",
+					"-lopencv_calib3d",
+					"-lopencv_features2d",
+					"-lopencv_highgui",
+					"-lopencv_videoio",
+					"-lopencv_flann",
+					"-lopencv_xobjdetect",
+					"-lopencv_imgcodecs",
+					"-lopencv_objdetect",
+					"-lopencv_xphoto",
+					"-lopencv_imgproc",
+					"-lopencv_core",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

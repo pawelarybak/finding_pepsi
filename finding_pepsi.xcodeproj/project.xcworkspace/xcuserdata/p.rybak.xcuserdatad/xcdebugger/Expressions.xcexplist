@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "getShapes(cv::Mat&amp;, std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt;&amp;):segmentation.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "_I(0, 0)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "getSegment(cv::Mat_&lt;cv::Vec&lt;unsigned char, 3&gt; &gt;&amp;, unsigned int, unsigned int):segmentation.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "I(4, 2)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
