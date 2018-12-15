@@ -33,13 +33,13 @@ void redSegment(cv::Mat& mask, std::vector<cv::Mat>& dst)
     for (cv::Mat& shape : shapes) {
         close(shape, 3);
         const double _malinowska = malinowska(shape);
-//        const double _M7 = M7(shape);
-//        const double _M3 = M3(shape);
+        const double _M7 = M7(shape);
+        const double _M3 = M3(shape);
 //        cv::imshow(std::to_string(ctr), shape);
 //        std::cout << ctr << ": " << _malinowska << " " << _M3 << " " << _M7 << std::endl;
 //        ctr += 1;
 //        if (_malinowska > -0.08 && _malinowska < -0.022 && _M7 < 5.0) {
-        if (_malinowska > -0.08 && _malinowska < -0.022) {
+        if (_malinowska > -0.08 && _malinowska < 0 && _M7 < 25.0 && _M3 > 1e+13) {
             dst.push_back(shape);
         }
     }
@@ -51,6 +51,7 @@ cv::Mat blueMask(cv::Mat& I)
     filterColor(O, ColorChannel::BLUE);
     tresh(O, 10);
     open(O);
+//    erosion(O);
 //    close(O);
 //    medianFilter(O);
     return O;
@@ -75,6 +76,19 @@ void blueSegment(cv::Mat& mask, std::vector<cv::Mat>& dst)
     }
 }
 
+cv::Mat whiteMask(cv::Mat& I)
+{
+    cv::Mat O = I.clone();
+    treshHLS(O, {0, 64, 100}, {255, 255, 255});
+//    filterColor(O, ColorChannel::BLUE);
+//    tresh(O, 10);
+//    open(O);
+    //    erosion(O);
+    //    close(O);
+    //    medianFilter(O);
+    return O;
+}
+
 void mergeSegments(std::vector<cv::Mat>& redSegments, std::vector<cv::Mat>& blueSegments, std::vector<cv::Mat>& dst)
 {
     for (cv::Mat& redShape : redSegments) {
@@ -90,17 +104,17 @@ void mergeSegments(std::vector<cv::Mat>& redSegments, std::vector<cv::Mat>& blue
 
 int main(int argc, char* argv [])
 {
-    if (argc < 2) {
-        std::cerr << "File path is required" << std::endl;
-        return -1;
-    }
-    cv::Mat originalImg = cv::imread(argv[1]);
-//    cv::Mat originalImg = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi_lol.jpg");
+//    if (argc < 2) {
+//        std::cerr << "File path is required" << std::endl;
+//        return -1;
+//    }
+//    cv::Mat originalImg = cv::imread(argv[1]);
+    cv::Mat originalImg = cv::imread("/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi5.jpeg");
 //    int ctr = 0;
     
     std::vector<cv::Mat> redElements;
     cv::Mat rMsk = redMask(originalImg);
-    cv::imshow("rMsk", rMsk);
+//    cv::imshow("rMsk", rMsk);
     redSegment(rMsk, redElements);
 
 //    std::cout << redElements.size() << std::endl;
@@ -111,7 +125,7 @@ int main(int argc, char* argv [])
 
     std::vector<cv::Mat> blueElements;
     cv::Mat bMsk = blueMask(originalImg);
-    cv::imshow("bMsk", bMsk);
+//    cv::imshow("bMsk", bMsk);
     blueSegment(bMsk, blueElements);
 
     
@@ -120,6 +134,9 @@ int main(int argc, char* argv [])
 //        cv::imshow("b" + std::to_string(ctr), sh);
 //        ctr += 1;
 //    }
+    
+//    cv::Mat wMsk = whiteMask(originalImg);
+//    cv::imshow("wMsk", wMsk);
 
     std::vector<cv::Mat> foundLogos;
     mergeSegments(redElements, blueElements, foundLogos);

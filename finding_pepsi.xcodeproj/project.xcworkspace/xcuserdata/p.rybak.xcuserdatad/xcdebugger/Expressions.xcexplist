@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "applyRank(cv::Mat_&lt;cv::Vec&lt;unsigned char, 3&gt; &gt;&amp;, unsigned int, unsigned int, std::__1::function&lt;unsigned char* (unsigned char*, unsigned char*)&gt;):window_operations.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "window">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "getSegments(cv::Mat&amp;, std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt;&amp;)::$_0::operator()(cv::Mat_&lt;cv::Vec&lt;unsigned char, 3&gt; &gt;&amp;, unsigned int, unsigned int) const:segmentation.cpp">
          <PersistentStrings>
             <PersistentString
@@ -34,6 +26,30 @@
          <PersistentStrings>
             <PersistentString
                value = "_I(0, 0)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "applyRank(cv::Mat_&lt;cv::Vec&lt;unsigned char, 3&gt; &gt;&amp;, unsigned int, unsigned int, std::__1::function&lt;unsigned char* (unsigned char*, unsigned char*)&gt;):window_operations.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "window">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "-0.00924447 &lt; -0.002">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__semwait_signal:(null)">
+         <PersistentStrings>
+            <PersistentString
+               value = "-0.00924447 &gt; -0.1">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
