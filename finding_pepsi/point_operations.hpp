@@ -17,7 +17,6 @@
 enum class ColorChannel { BLUE = 0, GREEN = 1, RED = 2 };
 
 void tresh(cv::Mat& I, unsigned char min_t = 0, unsigned char max_t = 255);
-void treshHLS(cv::Mat& I, cv::Vec3b min_hls, cv::Vec3b max_hls);
 void filterColor(cv::Mat& I, ColorChannel ch);
 
 #endif /* point_operations_hpp */
