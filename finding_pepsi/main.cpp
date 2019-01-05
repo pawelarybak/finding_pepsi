@@ -31,8 +31,7 @@ void redSegment(cv::Mat& mask, std::vector<cv::Mat>& dst)
         close(shape, 3);
         const double _malinowska = malinowska(shape);
         const double _M7 = M7(shape);
-        const double _M3 = M3(shape);
-        if (_malinowska > -0.08 && _malinowska < 0 && _M7 < 25.0 && _M3 > 1e+13) {
+        if (_malinowska > -0.08 && _malinowska < 0 && _M7 < 25.0) {
             dst.push_back(shape);
         }
     }
@@ -74,11 +73,17 @@ void mergeSegments(std::vector<cv::Mat>& redSegments, std::vector<cv::Mat>& blue
 
 int main(int argc, char* argv [])
 {
-    if (argc < 2) {
-        std::cerr << "File path is required" << std::endl;
-        return -1;
+    std::string filePath = "";
+    // In code override file path
+//    filePath = "/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi2.jpeg";
+    if (filePath.length() == 0) {
+        if (argc < 2) {
+            std::cerr << "File path is required" << std::endl;
+            return -1;
+        }
+        filePath = argv[1];
     }
-    cv::Mat originalImg = cv::imread(argv[1]);
+    cv::Mat originalImg = cv::imread(filePath);
     
     std::vector<cv::Mat> redElements;
     cv::Mat rMsk = redMask(originalImg);

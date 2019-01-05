@@ -14,8 +14,8 @@ Kompilację należy przeprowadzać z użyciem standardu C++17.
 
 Program wykrywa logo poprzez znalezienie osobno czerwonej oraz niebieskiej częsci loga, a następnie dobrania
 dwóch części znajdujących się odpowiednio blisko. Wyodrębnienie poszczególnych części składa się z utworzenia
-maski obrazu na podstawie wyodrębnienia koloru oraz progowania, a następnie segmentacji maski na odrębne
-elementy wybranie tych segmentów, które posiadają odpowiednie parametry. Finalnie znalezione elementy są
+maski obrazu na podstawie wyodrębnienia koloru oraz progowania, a następnie podzielenie maski na obszary ciągłe
+i wybranie tych obszarów, które posiadają odpowiednie parametry. Finalnie znalezione elementy są
 parowane na podstawie odległości. Dokładne kroki, oraz dobrane parametry można zobaczyć w pliku *main.cpp*.
 
 ## Użyte algorytmy
@@ -42,16 +42,16 @@ Funkcja otwarcia pozwoliła na oddzielenie interesującego fragmentu od tła. Sz
 niebieskiego fragmentu loga, które potrafiło zlewać się z niebieskim tłem etykiety. Operacja domknęcia wyeliminowała
 z elementów zakłócenia, takie jak światło odbijające się od etykiety.
 
-### Segmentacja
+### Wodrębnienie obszarów
 
 ##### Funkcja *getSegments*
 Funkcja, po znalezieniu interesującego piksela (np. białego), zamalowuje go na szaro i aplikuje ten sam algorytm dla
-każdego sąsiada. Po zamalowaniu wszystkich pikseli segmentu, jest on wyodrębniany jako osobna maska, a region
+każdego sąsiada. Po zamalowaniu wszystkich pikseli obszaru, jest on wyodrębniany jako osobna maska, a region
 na oryginalnym obrazie zamalowany na kolor tła. Funkcja ta zwraca wektor masek, gdzie każda reprezentuje osobny
 region.
 
 ##### Współczynnik Malinowskiej, M3 i M7
-Dla każdego segmentu był liczony współczynnik malinowskiej, a w przypadku segmentów czerwonych, również
+Dla każdego obszaru był liczony współczynnik malinowskiej, a w przypadku segmentów czerwonych, również
 współczynniki M3 i M7. Na podstawie wartości tych współczynników, część masek była odrzucana. Współczynniki
 te zostały dobrane osobno dla każdej klasy elementów (czerwonej częsci i niebieskiej częsci loga) metodą
 eksperymentalną.

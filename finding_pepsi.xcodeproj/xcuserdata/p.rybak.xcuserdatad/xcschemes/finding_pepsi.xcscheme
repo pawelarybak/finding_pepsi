@@ -61,6 +61,12 @@
             ReferencedContainer = "container:finding_pepsi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/p.rybak/Projects/finding_pepsi/test_data/pepsi1.jpeg"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

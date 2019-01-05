@@ -38,6 +38,14 @@
 		3624F65321C0FD7F00EAF9E3 /* segmentation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = segmentation.hpp; sourceTree = "<group>"; };
 		3624F65521C10B5E00EAF9E3 /* shape_analyze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shape_analyze.cpp; sourceTree = "<group>"; };
 		3624F65621C10B5E00EAF9E3 /* shape_analyze.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shape_analyze.hpp; sourceTree = "<group>"; };
+		36A3AE0021E1265A007AFD4E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		36A3AE0221E1266A007AFD4E /* pepsi2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi2.jpeg; sourceTree = "<group>"; };
+		36A3AE0321E1266A007AFD4E /* pepsi3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi3.jpeg; sourceTree = "<group>"; };
+		36A3AE0421E1266A007AFD4E /* pepsi4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi4.jpeg; sourceTree = "<group>"; };
+		36A3AE0521E1266A007AFD4E /* pepsi5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi5.jpeg; sourceTree = "<group>"; };
+		36A3AE0621E1266A007AFD4E /* pepsi6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi6.jpeg; sourceTree = "<group>"; };
+		36A3AE0721E1266A007AFD4E /* pepsi7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi7.jpeg; sourceTree = "<group>"; };
+		36A3AE0821E1266A007AFD4E /* pepsi1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsi1.jpeg; sourceTree = "<group>"; };
 		36B78ED921BD494700F036DA /* finding_pepsi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = finding_pepsi; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B78EDC21BD494700F036DA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,9 +61,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36A3AE0121E1266A007AFD4E /* test_data */ = {
+			isa = PBXGroup;
+			children = (
+				36A3AE0221E1266A007AFD4E /* pepsi2.jpeg */,
+				36A3AE0321E1266A007AFD4E /* pepsi3.jpeg */,
+				36A3AE0421E1266A007AFD4E /* pepsi4.jpeg */,
+				36A3AE0521E1266A007AFD4E /* pepsi5.jpeg */,
+				36A3AE0621E1266A007AFD4E /* pepsi6.jpeg */,
+				36A3AE0721E1266A007AFD4E /* pepsi7.jpeg */,
+				36A3AE0821E1266A007AFD4E /* pepsi1.jpeg */,
+			);
+			path = test_data;
+			sourceTree = "<group>";
+		};
 		36B78ED021BD494700F036DA = {
 			isa = PBXGroup;
 			children = (
+				36A3AE0121E1266A007AFD4E /* test_data */,
+				36A3AE0021E1265A007AFD4E /* README.md */,
 				36B78EDB21BD494700F036DA /* finding_pepsi */,
 				36B78EDA21BD494700F036DA /* Products */,
 			);
