@@ -1,5 +1,5 @@
-% Finding Pepsi
-% Paweł Rybak
+finding_pepsi
+==========
 
 Program ma na celu wykrywać loga pepsi na obrazie wejściowym. Ścieżka do obrazu jest podawana jako
 argument wywołania programu. Po przetworzeniu, wyświetlana jest wersja obrazu z wykrytymi elementami
